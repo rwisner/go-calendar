@@ -7,13 +7,15 @@ import (
 )
 
 func TestCalendar(t *testing.T) {
-	t.Log(NewCalendar().Html())
-	t.Log(NewCalendar().Markdown())
-	t.Log(NewCalendar().String())
+	timeNow := time.Now()
+	t.Log(NewCalendar(timeNow).Html())
+	t.Log(NewCalendar(timeNow).Markdown())
+	t.Log(NewCalendar(timeNow).String())
 }
 
 func TestMarkdown(t *testing.T) {
-	cal := NewCalendar()
+	timeNow := time.Now()
+	cal := NewCalendar(timeNow)
 	cal.Date, _ = time.Parse("2006-01-02", "2017-12-01")
 
 	{
@@ -50,7 +52,8 @@ func TestMarkdown(t *testing.T) {
 }
 
 func TestLink(t *testing.T) {
-	cal := NewCalendar()
+	timeNow := time.Now()
+	cal := NewCalendar(timeNow)
 	cal.Date, _ = time.Parse("2006-01-02", "2017-12-01")
 	cal.LinkFunc = func(t time.Time) string {
 		if t.Day() == 24 {

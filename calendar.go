@@ -21,8 +21,8 @@ func DefaultIsDayOffFunc(t time.Time) bool {
 	return t.Weekday() == time.Sunday || t.Weekday() == time.Saturday
 }
 
-func NewCalendar() *Calendar {
-	return &Calendar{WeekLabels: DefaultWeeekLabels, IsDayOffFunc: DefaultIsDayOffFunc, Date: time.Now()}
+func NewCalendar(t time.Time) *Calendar {
+	return &Calendar{WeekLabels: DefaultWeeekLabels, IsDayOffFunc: DefaultIsDayOffFunc, Date: t}
 }
 
 func (c *Calendar) Html() string {
